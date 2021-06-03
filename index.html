@@ -4,47 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yoda Translator</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <title>Yoda | Translator</title>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <nav class="nav-bar">
+        <h1>Yoda <span style="color: aliceblue;">|</span> Translator <img src="yoda.svg" alt="Yoda Code"> </h1>
+    </nav>
 
-    <header id="heading">
-        <p>AngrySantos</p>
-        <h1>Yoda Translator <img src="yoda.svg" /></h1>
-    </header>
+    <main>
+        <br>
+        <h1 class="label1" style="text-align:center;">SEND YOUR MESSAGE SECRETLY</h1>
+        <br>
+        <textarea id="input-txt" placeholder="Enter text to convert to Yoda Language:"></textarea>
 
+        <button id="translate-btn">TRANSLATE</button>
 
-    <img class="yoda-img" src="yoda.png" alt="Yoda Image   ">
+        <div class="label2"><h4><strong>Yoda code 👇</strong></h4></div>
 
-    <section>
-        <textarea id="input-txt" placeholder="Enter the text you want to Translate"></textarea>
-
-        <button class="btn" id="btn-translate">Translate</button>
-
-        <p>Your <img src="yoda.svg" /> Translation is come here 👇</p>
-        <div id="output-txt"></div>
-    </section>
+        <div id="output-txt">&lt;code&gt;</div>
+        
+        <button id="reset-btn">RESET</button>
+    </main>
 
     <footer>
-        Want to talk to Groot? But don't know his Language! Here's the translator that converts English to Groot Language!
-        <br>Have Fun!
+        <div>Connect Me !</div>
+        <br>
         <ul class="list-unordered footer-list">
-            <li><a class="links" href="https://github.com/Realsantosm"><i class='bx bxl-github'></i></a> </li>
-            <li><a class="links" href="https://www.facebook.com/santosmmu/"><i class='bx bxl-facebook'></i></a> </li>
+    
+            <li><a class="links" href="https://github.com/Realsantosm"><i class='bx bxl-github'></i></a> </li><br>
+            <li><a class="links" href="https://facebook.com/santosmmu/"><i class='bx bxl-facebook'></i></a> </li><br>
             <li>
                 <a class="links" href="https://twitter.com/Santossmmu"><i class='bx bxl-twitter'></i></a>
-            </li>
+            </li><br>
             <li>
                 <a class="links" href="https://www.linkedin.com/in/santoshmurmu/"><i class='bx bxl-linkedin'></i></a>
             </li>
         </ul>
-        <p>© | 2020 | AngrySantos | Made with ❤️ </p>
+        <p> Made by <a href="https://angrysantos.netlify.app">AngrySantos</a> @ All Rights Reserved</p>
+            <br><br>
+            
     </footer>
-    <script src="app.js"></script>
+
+    <script src="app.js" type="text/javascript"></script>  
+
 </body>
 
 </html>

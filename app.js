@@ -1,34 +1,42 @@
-let inputTxt = document.querySelector('#input-txt');
-let outputTxt = document.querySelector('#output-txt');
-let btnTranslate = document.querySelector('#btn-translate');
+const inputTextRef = document.querySelector("#input-txt");
+const translateButtonRef = document.querySelector("#translate-btn");
+const outputTextRef = document.querySelector("#output-txt");
+const resetButtonRef = document.querySelector("#reset-btn");
 
-let serverUrl = 'https://api.funtranslations.com/translate/yoda.json';
+const serverUrl = `https://api.funtranslations.com/translate/yoda.json`;
 
-function getUrl(text) {
-    return serverUrl + "?text=" + text;
+const constructUrl = text => {
+    const url = `${serverUrl}?text=${text}`;
+    return encodeURI(url);
 }
 
-btnTranslate.addEventListener('click', function btnClick() {
-    
-    if (inputTxt.value === '') {
-        alert('Please Enter some Text!');
-    } else if (!isNaN(parseFloat(inputTxt.value))) {
-        alert('Please Enter Text!');
-    } else if (/\d/.test(inputTxt.value)) {
-        alert('Please Enter only Text!');
-    } else {
-        fetch(getUrl(inputTxt.value))
-            .then(response => response.json())
-            .then(function getContent(json) {
-                console.log(json);
-                return outputTxt.innerText = json.contents.translated;
-            }).catch(function errorHandling(error) {
-                if (error.code === 429) {
-                    alert("Sorry There are Too Many Requests ! Please try again after some time");
-                } else {
-                    console.log("Sorry an Error Occured", error);
-                    alert("Something went wrong with our server! Try again after some time");
-                }
-            });
+const errorHandler = error => {
+    alert("Some error occured!");
+    console.log(error);
+    outputTextRef.innerText = "";
+    //create a new element
+    const span = document.createElement("span");
+    const node = document.createTextNode("API rate limit might be exceeded. Try again after an hour.");
+    span.appendChild(node);
+    const element = document.getElementById("output-txt");
+    element.appendChild(span);
+}
+
+const translateClickEventHandler = async () => {
+    const inputText = inputTextRef.value;
+    try {
+        const res = await fetch(constructUrl(inputText));
+        const json = await res.json();
+        outputTextRef.innerText = json.contents.translated;
+    } catch (err) {
+        errorHandler(err);
     }
-});
+}
+
+const resetClickEventHandler = () => {
+    inputTextRef.value = "";
+    outputTextRef.innerText = "</>";
+}
+
+translateButtonRef.addEventListener("click", translateClickEventHandler);
+resetButtonRef.addEventListener("click", resetClickEventHandler);
